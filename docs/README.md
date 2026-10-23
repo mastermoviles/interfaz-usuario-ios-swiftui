@@ -2,7 +2,7 @@
 
 En estos apuntes se extienden los contenidos de iOS para la asignatura <a href="http://cvnet.cpd.ua.es/Guia-Docente/?wcodasi=43282&wlengua=es&scaca=2022-23">Interfaz de Usuario en Dispositivos Móviles</a>, perteneciente al <a href="http://www.eps.ua.es/es/master-moviles/">Máster en Desarrollo de Software para Dispositivos Móviles</a> de la <a href="http://www.ua.es">Universidad de Alicante</a>. Estos materiales están elaborados por <a href="http://www.dlsi.ua.es/~pertusa">Antonio Pertusa</a>.
 
-Las interfaces de este libro se construyen con **SwiftUI**. Se da por supuesto que
+En esta parte de la asignatura trabajaremos con **SwiftUI**. Se da por supuesto que
 conoces el lenguaje _Swift_, pero no que hayas usado _SwiftUI_ antes: la primera
 sesión es un recorrido por lo imprescindible para seguir el resto del libro, y a
 partir de ahí los ejercicios se implementan desde cero.

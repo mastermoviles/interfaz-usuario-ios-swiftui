@@ -478,7 +478,9 @@ _f)_ **Para practicar la extracción de subvistas**, saca el bloque del título 
 autor a una vista aparte llamada `DatosLibro`, que reciba el libro como propiedad, y
 úsala desde `ContentView`. El resultado en pantalla debe ser idéntico.
 
+<!--
 !!! question "Para pensar"
     ¿Por qué `esFavorito` tiene que ser `@State` y no una variable normal? Prueba a
     declararla como `private var esFavorito = false` (sin `@State`) y observa el error
     que da Xcode al intentar modificarla dentro del botón.
+-->

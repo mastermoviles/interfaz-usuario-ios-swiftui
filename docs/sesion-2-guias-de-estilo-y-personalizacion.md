@@ -33,7 +33,7 @@ En la práctica, lo que debe cumplir una aplicación es:
   un diseño uniforme en toda la app.
 * **Adaptabilidad**: la pantalla debe responder al giro del dispositivo, al modo
   oscuro y al tamaño de letra que el usuario haya elegido en los ajustes del sistema.
-* **_Feedback_**: hay que confirmar las acciones y mostrar sus resultados.
+* **_Feedback_**: hay que confirmar las acciones del usuario y mostrar sus resultados.
 
 Antes de diseñar conviene saber a qué público va dirigida la app, y hacer un diseño previo con herramientas de _mockups_ como <a href="https://playmockup.com">Play</a> o <a href="https://balsamiq.com">Balsamiq</a>, aunque usando Preview en SwiftUI suele ser suficiente.
 
