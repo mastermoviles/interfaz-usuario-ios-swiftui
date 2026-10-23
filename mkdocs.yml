@@ -1,0 +1,42 @@
+site_name: Interfaz de usuario en iOS con SwiftUI (IUDM)
+use_directory_urls: false
+
+# index.md es el índice que usa GitBook; mkdocs construye su navegación
+# desde `nav`, así que lo excluimos para que no choque con README.md.
+exclude_docs: |
+  index.md
+
+nav:
+- Presentación : 'README.md'
+- 1- Introducción a SwiftUI : 'sesion-1-introduccion-a-swiftui.md'
+- 2- Guías de estilo y personalización : 'sesion-2-guias-de-estilo-y-personalizacion.md'
+- 3- Contenedores y navegación : 'sesion-3-contenedores-y-navegacion.md'
+- 4- Diseño de aplicaciones universales : 'sesion-4-apps-universales.md'
+
+theme:
+    language: es
+    name: 'material'
+    palette:
+        primary: 'Indigo'
+        accent: 'Indigo'
+    font:
+        text: 'Roboto'
+        code: 'Roboto Mono'
+    features:
+        - content.code.copy
+
+extra:
+    search:
+        language: 'en'
+
+markdown_extensions:
+    - admonition
+    - codehilite:
+        linenums: true
+    - footnotes
+    - meta
+    - sane_lists
+    - toc:
+       permalink: false
+       toc_depth: 2
+    - pymdownx.superfences
