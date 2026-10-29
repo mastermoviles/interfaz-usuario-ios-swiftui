@@ -60,7 +60,7 @@ prácticas**:
     Personaliza **a través de los modificadores que ofrece el sistema**
     (`.tint`, `.background`, `.foregroundStyle`, `.toolbarBackground`…). Si para
     conseguir un efecto necesitas inspeccionar o manipular las vistas internas de un
-    componente, es muy probable que se rompa en la siguiente versión de iOS.
+    componente, es muy probable que deje de funcionar en la siguiente versión de iOS.
 
 ### Adaptabilidad: modo oscuro y tamaño de letra
 
@@ -211,18 +211,15 @@ struct CeldaLibro: View {
 }
 ```
 
-Dos detalles que merecen explicación:
+Dos detalles:
 
 * `.background(Image(...))` coloca la imagen **detrás** de todo el contenido de la
-  fila. Fíjate en que el modificador va aplicado al `HStack` entero, no a una vista
-  suelta: por eso el fondo cubre toda la celda.
-* `.listRowInsets(EdgeInsets())` quita los márgenes que `List` añade por defecto a
-  cada fila. Sin esto, el fondo no llegaría a los bordes de la pantalla. Prueba a
-  comentar esa línea para ver la diferencia.
+  fila. Fíjate en que el modificador va aplicado al `HStack` entero, no a una vista   suelta. Por eso el fondo cubre toda la celda.
+* `.listRowInsets(EdgeInsets())` quita los márgenes que `List` añade por defecto a cada fila. Sin esto, el fondo no llegaría a los bordes de la pantalla. Prueba a comentar esa línea para ver la diferencia.
 
 ### La lista
 
-Ahora el `ContentView`. Este es el esqueleto, al que le faltan piezas:
+Ahora el `ContentView`. Este es el esqueleto, en el que falta completar código (abajo vienen los detalles de cómo hacerlo):
 
 ```swift
 import SwiftUI
@@ -277,10 +274,7 @@ información, así que _VoiceOver_ no debería leerlas. Añade `.accessibilityHi
 a la imagen de fondo dentro de `CeldaLibro` y comprueba que el resto sigue igual.
 
 !!! question "Para pensar"
-    Una lista con cientos de filas no puede tener cientos de vistas creadas a la vez.
-    Sin embargo, tú no has escrito nada para evitarlo. ¿Quién decide entonces cuántas
-    `CeldaLibro` existen en un momento dado? Prueba a poner un `print` dentro del
-    `body` de `CeldaLibro` y observa cuándo se ejecuta al desplazar una lista larga.
+    Una lista con cientos de filas no puede tener cientos de vistas creadas a la vez. Sin embargo, tú no has escrito nada para evitarlo. ¿Quién decide entonces cuántas `CeldaLibro` existen en un momento dado? Prueba a poner un `print` dentro del `body` de `CeldaLibro` y observa cuándo se ejecuta al desplazar una lista larga.
 
 ---
 
