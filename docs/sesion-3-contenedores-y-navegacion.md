@@ -26,9 +26,7 @@ Crea un proyecto _iOS > App_ con **Interface: SwiftUI** llamado `ejercicio_pagev
 
 ### La vista de una página
 
-Como las cuatro páginas tienen la misma estructura y sólo cambian el título y la
-imagen, escribimos **una** vista parametrizada. Crea un fichero llamado 
-`PageContentView.swift`:
+Como las cuatro páginas tienen la misma estructura y sólo cambian el título y la imagen, escribimos **una** vista parametrizada. Crea un fichero llamado  `PageContentView.swift`:
 
 ```swift
 import SwiftUI
@@ -176,9 +174,7 @@ struct ContentView: View {
 
 _a)_ Declara las columnas como `let columnas = [GridItem(.adaptive(minimum: 100), spacing: 8)]`.
 
-_b)_ Dentro del `ScrollView`, crea un `LazyVGrid(columns: columnas, spacing: 8)` y
-recorre las 16 imágenes con un `ForEach(1...16, id: \.self)`. Cada imagen se construye
-con `Image("\(i)")` y necesita:
+_b)_ Dentro del `ScrollView`, crea un `LazyVGrid(columns: columnas, spacing: 8)` y recorre las 16 imágenes con un `ForEach(1...16, id: \.self)`. Cada imagen se construye con `Image("\(i)")` y necesita:
 
 ```swift
 .resizable()
@@ -191,12 +187,9 @@ con `Image("\(i)")` y necesita:
 Piensa por qué hace falta `.clipped()` junto a `.scaledToFill()`: prueba a quitarlo y
 observa qué ocurre con las imágenes que no son cuadradas.
 
-_c)_ Ejecuta la app en un iPhone y gíralo. Después lánzala en un iPad. Comprueba que
-el número de columnas cambia solo en los tres casos, sin que hayas escrito ningún
-código para ello.
+_c)_ Ejecuta la app en un iPhone y gíralo. Después lánzala en un iPad. Comprueba que el número de columnas cambia solo en los tres casos, sin que hayas escrito ningún código para ello.
 
-_d)_ Cambia el `minimum:` de 100 a 150 y vuelve a probar. ¿Cuántas columnas salen
-ahora en el iPhone en vertical?
+_d)_ Cambia el `minimum:` de 100 a 150 y vuelve a probar. ¿Cuántas columnas salen ahora en el iPhone en vertical?
 
 <!----
 _e)_ **Para ampliar.** Haz que al pulsar una imagen se navegue a una pantalla de
