@@ -1,36 +1,33 @@
 # 3- Contenedores y navegación
 
-En la sesión anterior las pantallas mostraban solamente una cosa. En esta veremos tres formas de organizar contenido más complejo: páginas por las que se desliza, rejillas que se reorganizan según el espacio, y listas con buscador.
+En esta sesión veremos tres formas de organizar contenido complejo: páginas por las que deslizarse, rejillas que se reorganizan según el espacio y tablas con buscador.
 
-Las tres comparten un patrón que conviene reconocer: **un contenedor que coloca el contenido, y un estado que dice en qué punto estamos** (qué página se ve, qué texto se busca). Esa separación entre "qué se muestra" y "dónde estamos" es la que hace que no haya que escribir código de actualización.
+Las tres comparten un patrón que conviene reconocer: **un contenedor que coloca el contenido, y un estado que dice en qué punto estamos** (qué página se ve, qué texto se busca). Esa separación entre "qué se muestra" y "dónde estamos" es la que hace que no haya que escribir código de actualización para las vistas.
 
 ---
 
 ## Ejercicio 1 - Contenido paginado
 
-Vamos a construir un tutorial de bienvenida de cuatro páginas por las que el usuario pasa deslizando, con los puntitos indicadores abajo y un botón para volver al principio.
+Vamos a construir un tutorial de bienvenida de cuatro páginas por las que el usuario pasa deslizando, con los puntos indicadores abajo y un botón para volver al principio.
 
 ![Resultado del ejercicio de páginas](assets/img/pageview_resultado.png "Contenido paginado")
 
 ### TabView en modo página
 
-`TabView` es el contenedor que normalmente dibuja una barra de pestañas abajo, pero cambiándole el estilo a `.page` se convierte en un contenedor paginado: las vistas que contiene pasan a ser páginas por las que el usuario desliza horizontalmente, con los puntos indicadores incluidos.
+`TabView` es el contenedor que normalmente dibuja una barra de pestañas debajo, pero cambiándole el estilo a `.page` se convierte en un contenedor paginado: las vistas que contiene pasan a ser páginas por las que el usuario avanza horizontalmente, con los puntos indicadores incluidos.
 
-La página que se ve en cada momento se guarda en una variable de estado, que el
-`TabView` actualiza al deslizar y que nosotros podemos cambiar para saltar a otra
-página.
+La página que se ve en cada momento se guarda en una variable de estado, que el `TabView` actualiza al deslizar y que nosotros podemos cambiar para saltar a otra página.
 
 ### Creando el proyecto
 
-Crea un proyecto _iOS > App_ con **Interface: SwiftUI** llamado `ejercicio_pageview`, y
-añade a los _Assets_ las cuatro imágenes de
+Crea un proyecto _iOS > App_ con **Interface: SwiftUI** llamado `ejercicio_pageview`, y añade a los _Assets_ las cuatro imágenes de
 <a href="assets/descargas/imagenes_paginas.zip">imagenes_paginas.zip</a>
 (`page1.png` … `page4.png`).
 
 ### La vista de una página
 
 Como las cuatro páginas tienen la misma estructura y sólo cambian el título y la
-imagen, escribimos **una** vista parametrizada. Crea un fichero
+imagen, escribimos **una** vista parametrizada. Crea un fichero llamado 
 `PageContentView.swift`:
 
 ```swift
@@ -58,7 +55,7 @@ struct PageContentView: View {
 
 ### El contenedor paginado
 
-Y ahora el `ContentView`, con huecos para completar:
+Y ahora el `ContentView`, con código para completar (instrucciones abajo):
 
 ```swift
 import SwiftUI
@@ -95,12 +92,9 @@ struct ContentView: View {
 _a)_ Declara `@State private var paginaActual = 0`.
 
 _b)_ Pasa la selección al `TabView` con `TabView(selection: $paginaActual)`. Fíjate en
-el `$`: el `TabView` **escribe** en esa variable cuando el usuario desliza, así que
-necesita un _binding_.
+el `$`: el `TabView` **escribe** en esa variable cuando el usuario desliza la pantalla, así que necesita un _binding_.
 
-_c)_ Dentro del `TabView`, recorre las páginas con un `ForEach` sobre los índices y
-crea una `PageContentView` para cada una. Cada página necesita un `.tag(i)` para que
-la selección sepa a cuál corresponde:
+_c)_ Dentro del `TabView`, recorre las páginas con un `ForEach` sobre los índices y crea un `PageContentView` para cada una. Cada página necesita un `.tag(i)` para que la selección sepa a cuál corresponde:
 
 ```swift
 ForEach(titulos.indices, id: \.self) { i in
@@ -109,14 +103,10 @@ ForEach(titulos.indices, id: \.self) { i in
 }
 ```
 
-_d)_ Añade debajo del `TabView` un `Button("Start again")` que ponga `paginaActual` a
-cero. Envuélvelo en `withAnimation { ... }` para que la vuelta a la primera página se
-anime en lugar de dar un salto.
+_d)_ Añade debajo del `TabView` un `Button("Start again")` que ponga `paginaActual` a cero. Envuélvelo en `withAnimation { ... }` para que la vuelta a la primera página sea animada en lugar de dar un salto.
 
 _e)_ Ejecuta la app. Comprueba que puedes deslizar entre las cuatro páginas, que los puntos de abajo reflejan la página actual, y que el botón vuelve a la primera.
 
-_f)_ Prueba a quitar el `.tag(i)` del `ForEach` y vuelve a ejecutar. ¿Qué ocurre con
-el botón "Start again"? Esto te da una idea de para qué sirve exactamente el `tag`.
 
 <!----!!! question "Para pensar"
     En ningún momento has escrito código que diga "cuál es la página siguiente" ni
@@ -129,26 +119,21 @@ el botón "Start again"? Esto te da una idea de para qué sirve exactamente el `
 
 ## Ejercicio 2 - Rejilla de contenido
 
-Ahora construiremos una rejilla de imágenes que se reorganiza sola según el espacio
-disponible: más columnas en un iPad o en horizontal, menos en un iPhone en vertical.
+Ahora construiremos una rejilla de imágenes que se reorganiza sola según el espacio disponible: más columnas en un iPad o en horizontal, menos en un iPhone en vertical. En _UIKit_ esto se implementaba mediante un `CollectionViewController`, pero en _SwiftUI_ es bastante más sencillo.
 
 ![Resultado del ejercicio de colección](assets/img/collection_resultado.png "Rejilla de imágenes")
 
 ### Creando el proyecto
 
-Crea un proyecto _iOS > App_ con **Interface: SwiftUI** llamado
-`ejercicio_collection`. Descarga
-<a href="assets/descargas/imagenes_comida.zip">imagenes_comida.zip</a> y arrastra las
+Crea un proyecto _iOS > App_ con **ISwiftUI** llamado
+`ejercicio_collection`. Descarga <a href="assets/descargas/imagenes_comida.zip">imagenes_comida.zip</a> y arrastra las
 16 imágenes (`1.jpg` … `16.jpg`) a los _Assets_.
 
 ### Rejillas en SwiftUI
 
-Una rejilla se construye con `LazyVGrid` (o `LazyHGrid`) dentro de un `ScrollView`. El
-"lazy" del nombre significa que las vistas sólo se crean cuando están a punto de
-aparecer en pantalla: con 16 imágenes da igual, pero con cientos es lo que mantiene la
-app fluida.
+Una rejilla se construye con `LazyVGrid` (o `LazyHGrid`) dentro de un `ScrollView`. El _lazy_ del nombre significa que las vistas sólo se crean cuando están a punto de aparecer en pantalla: con 16 imágenes da igual, pero con cientos es lo que mantiene la app fluida.
 
-Lo que define la rejilla es el array de columnas. Hay tres formas de especificarlas:
+La rejilla se define con un array de columnas. Hay tres formas de especificarlas:
 
 ```swift
 // Dos columnas de ancho fijo
@@ -161,10 +146,7 @@ Lo que define la rejilla es el array de columnas. Hay tres formas de especificar
 [GridItem(.adaptive(minimum: 100))]
 ```
 
-La tercera es la interesante: en lugar de decir cuántas columnas quieres, dices el
-ancho mínimo que debe tener cada una y dejas que el sistema calcule cuántas caben. Así
-la rejilla se adapta sola al girar el dispositivo o al cambiar de dispositivo, sin
-código adicional.
+La tercera es la interesante: en lugar de decir cuántas columnas quieres, indicamos el ancho mínimo que debe tener cada una y dejamos que el sistema calcule cuántas caben. Así la rejilla se adapta sola al girar el dispositivo o al cambiar de dispositivo, sin código adicional.
 
 ### El código
 
@@ -227,29 +209,25 @@ detalle que la muestre a tamaño completo. Necesitarás envolver la rejilla en u
 
 ## Ejercicio 3 - Barra de búsqueda
 
-Por último, añadiremos un buscador que filtra una lista mientras se escribe.
+Por último, vamos a crear una tabla con un buscador que filtra los resultados mientras se escribe.
 
 ![Resultado del ejercicio de búsqueda](assets/img/searchbar_resultado.png "Lista con búsqueda")
 
 ### Buscar con `.searchable`
 
-Añadir un buscador a una lista consiste en dos piezas:
+Añadir un buscador a una lista implica dos elementos:
 
 1. Una variable de estado con el texto que el usuario va escribiendo.
-2. Una lista que no muestra los datos completos, sino **el resultado de filtrarlos**
-   por ese texto.
+2. Una lista que no muestra los datos completos, sino **el resultado de filtrarlos** por ese texto.
 
-El modificador `.searchable` se encarga de dibujar la barra de búsqueda y de escribir
-en esa variable. El filtrado lo escribes tú, y es sólo una línea.
+El modificador `.searchable` se encarga de dibujar la barra de búsqueda y de escribir en esa variable. El filtrado lo define el programador y es sólo una línea.
 
-Lo importante es que **no hay dos listas**: no existe una lista "normal" y otra "de
-resultados". Hay una sola lista cuyo contenido depende del texto de búsqueda, que
-cuando está vacío son todos los datos.
+Lo importante es que **no hay dos listas**: no existe una lista "normal" y otra "de resultados". Hay una sola lista cuyo contenido depende del texto de búsqueda, que cuando está vacío son todos los datos.
 
 ### Creando el proyecto
 
 Crea un proyecto _iOS > App_ con **Interface: SwiftUI** llamado
-`ejercicio_prueba_searchbar`. Este ejercicio no necesita imágenes.
+`ejercicio_searchbar`. 
 
 ### El código
 
@@ -286,17 +264,14 @@ struct ContentView: View {
 
 _a)_ Declara `@State private var textoBusqueda = ""`.
 
-_b)_ Completa la propiedad calculada `resultados`. Si el texto de búsqueda está vacío
-debe devolver `contenido` entero; si no, sólo las palabras que **empiezan** por ese
-texto, sin distinguir mayúsculas. Una pista:
+_b)_ Completa la propiedad calculada `resultados`. Si el texto de búsqueda está vacío debe devolver `contenido` entero. Si no, sólo las palabras que **empiezan** por ese texto, sin distinguir mayúsculas. Una pista:
 
 ```swift
 guard !textoBusqueda.isEmpty else { return contenido }
 return contenido.filter { $0.lowercased().hasPrefix(textoBusqueda.lowercased()) }
 ```
 
-Fíjate en que `resultados` **no** es `@State`. Se recalcula sola cada vez que cambia
-`textoBusqueda`, así que no puede quedarse desincronizada.
+Fíjate en que `resultados` **no** es `@State`. Se recalcula solo cuando cambia `textoBusqueda`, así que no puede quedarse desincronizado.
 
 _c)_ Añade el modificador de búsqueda:
 
@@ -310,19 +285,13 @@ _d)_ Ejecuta la app y escribe `l` en el buscador. Deben quedar visibles sólo "l
 "la".
 
 !!! warning "Importante: `displayMode: .always`"
-    Si dejas `.searchable(text: $textoBusqueda)` sin indicar `placement`, en **iOS 17**
-    la barra de búsqueda queda **oculta** hasta que el usuario arrastra la lista hacia
-    abajo. Como esta lista sólo tiene seis filas, no llega a desplazarse y la barra no
-    aparecería nunca: la pantalla se vería sin buscador. En iOS 26 sí sale por defecto.
+    Si dejas `.searchable(text: $textoBusqueda)` sin indicar `placement`, en **iOS 17** la barra de búsqueda queda **oculta** hasta que el usuario arrastra la lista hacia abajo. Como esta lista sólo tiene seis filas, no llega a desplazarse y la barra no aparecería nunca: la pantalla se vería sin buscador. En iOS 26 sí que sale por defecto.
 
     Es un buen ejemplo de por qué conviene probar también en la versión de iOS más baja que soporte tu app, y no fiarse del comportamiento por defecto cuando hay una opción explícita.
 
-_e)_ Comprueba ese comportamiento tú mismo: quita el `placement` y lanza la app en un
-simulador con iOS 17. Después vuelve a ponerlo.
+_e)_ Comprueba ese comportamiento tú mismo: quita el `placement` y lanza la app en un simulador con iOS 17. Después vuelve a añadirlo.
 
-_f)_ **Para ampliar.** Añade `.searchSuggestions` para ofrecer sugerencias mientras se
-escribe, o cambia el filtro de "empieza por" a "contiene" usando
-`localizedCaseInsensitiveContains`. ¿Qué resultados salen ahora al escribir `a`?
+_f)_ **Para ampliar.** Añade `.searchSuggestions` para ofrecer sugerencias mientras se escribe, o cambia el filtro de "empieza por" a "contiene" usando `localizedCaseInsensitiveContains`. ¿Qué resultados salen ahora al escribir `a`?
 
 <!----
 !!! question "Para pensar"
