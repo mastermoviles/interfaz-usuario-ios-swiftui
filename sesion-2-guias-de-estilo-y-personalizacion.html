@@ -1,0 +1,883 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="sesion-1-introduccion-a-swiftui.html">
+      
+      
+        <link rel="next" href="sesion-3-contenedores-y-navegacion.html">
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>2- Guías de estilo y personalización - Interfaz de usuario en iOS con SwiftUI (IUDM)</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="Indigo" data-md-color-accent="Indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2-guias-de-estilo-y-personalizacion" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Interfaz de usuario en iOS con SwiftUI (IUDM)" class="md-header__button md-logo" aria-label="Interfaz de usuario en iOS con SwiftUI (IUDM)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Interfaz de usuario en iOS con SwiftUI (IUDM)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2- Guías de estilo y personalización
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Interfaz de usuario en iOS con SwiftUI (IUDM)" class="md-nav__button md-logo" aria-label="Interfaz de usuario en iOS con SwiftUI (IUDM)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Interfaz de usuario en iOS con SwiftUI (IUDM)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sesion-1-introduccion-a-swiftui.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1- Introducción a SwiftUI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    2- Guías de estilo y personalización
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="sesion-2-guias-de-estilo-y-personalizacion.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    2- Guías de estilo y personalización
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#guias-de-estilo-en-ios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guías de estilo en iOS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#personalizacion-en-swiftui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Personalización en SwiftUI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-1-personalizacion-de-celdas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 1 - Personalización de celdas
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sesion-3-contenedores-y-navegacion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3- Contenedores y navegación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sesion-4-apps-universales.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4- Diseño de aplicaciones universales
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#guias-de-estilo-en-ios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Guías de estilo en iOS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#personalizacion-en-swiftui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Personalización en SwiftUI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-1-personalizacion-de-celdas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 1 - Personalización de celdas
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="2-guias-de-estilo-y-personalizacion">2- Guías de estilo y personalización</h1>
+<p>En esta sesión veremos primero las recomendaciones de diseño de <em>Apple</em> (las
+<em>Human Interface Guidelines</em>, o HIG) y después cómo personalizar el aspecto de listas
+y barras en <em>SwiftUI</em>.</p>
+<h2 id="guias-de-estilo-en-ios">Guías de estilo en iOS</h2>
+<p>Apple publica sus recomendaciones de diseño en las
+<a href="https://developer.apple.com/design/human-interface-guidelines/">Human Interface Guidelines</a>.
+No son una norma de obligado cumplimiento, pero conviene conocerlas: una app que se
+sale de ellas sin motivo resulta extraña al usuario, y puede ser rechazada en la
+revisión de la <em>App Store</em>.</p>
+<h3 id="principios-de-diseno">Principios de diseño</h3>
+<p>Los principios que Apple viene manteniendo son tres:</p>
+<ul>
+<li><strong>Claridad</strong>. El texto debe ser legible a cualquier tamaño, los iconos precisos, los
+  adornos escasos. El espacio en blanco, el color y la tipografía deben destacar el
+  contenido importante y facilitar la interacción.</li>
+<li><strong>Deferencia</strong> (<em>deference</em>). El interfaz está al servicio del contenido, no al
+  revés. Los elementos de la interfaz deben ser ligeros y no competir con lo que el
+  usuario ha venido a ver.</li>
+<li><strong>Profundidad</strong>. Las capas visuales y las transiciones ayudan a entender la
+  jerarquía de la aplicación y dan sensación de continuidad al navegar.</li>
+</ul>
+<p>En la práctica, lo que debe cumplir una aplicación es:</p>
+<ul>
+<li><strong>Integridad estética</strong>: el aspecto visual debe encajar con lo que la app hace. Un
+  juego puede permitirse una interfaz vistosa; una app de contabilidad, no.</li>
+<li><strong>Consistencia</strong>: usar los elementos estándar que el usuario ya conoce, y mantener
+  un diseño uniforme en toda la app.</li>
+<li><strong>Adaptabilidad</strong>: la pantalla debe responder al giro del dispositivo, al modo
+  oscuro y al tamaño de letra que el usuario haya elegido en los ajustes del sistema.</li>
+<li><strong><em>Feedback</em></strong>: hay que confirmar las acciones del usuario y mostrar sus resultados.</li>
+</ul>
+<p>Antes de diseñar conviene saber a qué público va dirigida la app, y hacer un diseño previo con herramientas de <em>mockups</em> como <a href="https://playmockup.com">Play</a> o <a href="https://balsamiq.com">Balsamiq</a>, aunque usando Preview en SwiftUI suele ser suficiente.</p>
+<h3 id="liquid-glass-el-rediseno-de-ios-26">Liquid Glass: el rediseño de iOS 26</h3>
+<p>iOS 26 introdujo <strong>Liquid Glass</strong>, el cambio de aspecto más profundo del sistema desde iOS 7. Los controles y las barras se dibujan ahora sobre un material translúcido que refracta y refleja el contenido que tienen debajo, y adoptan formas de cápsula con esquinas muy redondeadas.</p>
+<p>Para el desarrollo, lo importante no es el efecto en sí sino sus <strong>consecuencias
+prácticas</strong>:</p>
+<ul>
+<li><strong>El contenido manda todavía más.</strong> El material de las barras es translúcido y deja
+  ver lo que hay detrás. Conviene que el contenido llegue por debajo de las barras en
+  lugar de dejar franjas opacas.</li>
+<li><strong>Los controles estándar se adaptan solos.</strong> Un <code>Button</code>, un <code>Picker</code> o una <code>List</code>
+  adoptan el aspecto nuevo sin tocar nada, y seguirán adaptándose en futuras versiones.</li>
+<li><strong>La personalización que pelea con el sistema se rompe.</strong> Esta es la lección
+  importante, y la veremos en el segundo ejercicio. Intentar imponer un aspecto
+  colocando vistas por debajo de una barra, o manipulando las vistas internas de un
+  control, deja de funcionar o produce resultados ilegibles en cuanto el sistema
+  cambia de aspecto. Lo que se personaliza por los puntos previstos sigue
+  funcionando.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">La regla práctica</p>
+<p>Personaliza <strong>a través de los modificadores que ofrece el sistema</strong>
+(<code>.tint</code>, <code>.background</code>, <code>.foregroundStyle</code>, <code>.toolbarBackground</code>…). Si para
+conseguir un efecto necesitas inspeccionar o manipular las vistas internas de un
+componente, es muy probable que deje de funcionar en la siguiente versión de iOS.</p>
+</div>
+<h3 id="adaptabilidad-modo-oscuro-y-tamano-de-letra">Adaptabilidad: modo oscuro y tamaño de letra</h3>
+<p>Dos ajustes que el usuario controla desde el sistema y que tu app debe respetar.</p>
+<p><strong>Modo oscuro.</strong> No uses colores absolutos. En lugar de <code>Color.black</code> o <code>Color.white</code>, usa los colores semánticos, que ya se adaptan:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Text</span><span class="p">(</span><span class="s">"Título"</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">foregroundStyle</span><span class="p">(.</span><span class="n">primary</span><span class="p">)</span><span class="w">       </span><span class="c1">// se adapta a claro/oscuro</span>
+<span class="n">Text</span><span class="p">(</span><span class="s">"Subtítulo"</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">foregroundStyle</span><span class="p">(.</span><span class="n">secondary</span><span class="p">)</span>
+</code></pre></div>
+<p>Puedes comprobarlo en la <em>preview</em> sin tocar el simulador:</p>
+<div class="highlight"><pre><span></span><code><span class="p">#</span><span class="n">Preview</span><span class="p">(</span><span class="s">"Oscuro"</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ContentView</span><span class="p">().</span><span class="n">preferredColorScheme</span><span class="p">(.</span><span class="n">dark</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Tamaño de letra dinámico</strong> (<em>Dynamic Type</em>). Si usas los estilos del sistema
+(<code>.title</code>, <code>.body</code>, <code>.caption</code>…) en lugar de tamaños fijos, el texto crecerá cuando el
+usuario aumente el tamaño de letra en los ajustes:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Text</span><span class="p">(</span><span class="s">"Se adapta"</span><span class="p">).</span><span class="n">font</span><span class="p">(.</span><span class="n">body</span><span class="p">)</span><span class="w">          </span><span class="c1">// bien</span>
+<span class="n">Text</span><span class="p">(</span><span class="s">"No se adapta"</span><span class="p">).</span><span class="n">font</span><span class="p">(.</span><span class="n">system</span><span class="p">(</span><span class="n">size</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">))</span><span class="w">   </span><span class="c1">// evítalo</span>
+</code></pre></div>
+<h3 id="accesibilidad">Accesibilidad</h3>
+<p>Es mucho más fácil tenerla en cuenta desde el principio que añadirla después. Lo
+mínimo:</p>
+<ul>
+<li>Poner una descripción a las imágenes que transmiten información, para que
+  <em>VoiceOver</em> pueda leerlas:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">Image</span><span class="p">(</span><span class="s">"portada"</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">accessibilityLabel</span><span class="p">(</span><span class="s">"Portada de La historia interminable"</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>Las imágenes puramente decorativas se marcan para que <em>VoiceOver</em> las ignore:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">Image</span><span class="p">(</span><span class="s">"fondo"</span><span class="p">).</span><span class="n">accessibilityHidden</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>Mantener contraste suficiente entre texto y fondo. Esto es especialmente relevante
+  al poner imágenes de fondo, como haremos en los ejercicios de esta sesión.</li>
+</ul>
+<h3 id="componentes-disponibles">Componentes disponibles</h3>
+<p>En <a href="https://developer.apple.com/design/human-interface-guidelines/components/all-components">este enlace</a>
+están todos los componentes del sistema. Se agrupan en:</p>
+<ul>
+<li><strong>Contenido</strong>: para mostrar texto, imágenes, gráficos o contenido web.</li>
+<li><strong>Distribución y organización</strong>: listas, rejillas, tablas, secciones.</li>
+<li><strong>Menús y acciones</strong>: botones, menús, <em>pop-ups</em>.</li>
+<li><strong>Navegación y búsqueda</strong>: barras de navegación, <em>tab bars</em>, campos de búsqueda.</li>
+<li><strong>Presentación</strong>: alertas, hojas modales, <em>popovers</em>, controles de página.</li>
+<li><strong>Selección y entrada</strong>: <em>pickers</em>, <em>toggles</em>, <em>sliders</em>, campos de texto.</li>
+<li><strong>Estado</strong>: barras de progreso, medidores.</li>
+<li><strong>Experiencias del sistema</strong>: notificaciones, <em>widgets</em>, barra de estado.</li>
+</ul>
+<hr />
+<h2 id="personalizacion-en-swiftui">Personalización en SwiftUI</h2>
+<p>Personalizar es modificar el aspecto visual de los componentes estándar. Por norma
+general <strong>no se recomienda</strong>, porque confunde al usuario, pero hay casos donde es
+necesario: juegos, apps con identidad de marca propia, o listas donde cada fila debe
+mostrar información estructurada.</p>
+<p>La personalización de las celdas de una lista es la excepción: es algo completamente
+habitual en iOS, y es con lo que empezaremos.</p>
+<hr />
+<h2 id="ejercicio-1-personalizacion-de-celdas">Ejercicio 1 - Personalización de celdas</h2>
+<p>Vamos a construir una lista de libros donde cada fila muestra la portada, el título y
+el autor, con un fondo que alterna entre dos imágenes (efecto <em>zebra</em>). Este es el
+resultado al que queremos llegar:</p>
+<p><img alt="Resultado del ejercicio de celdas" src="assets/img/celdas_resultado.png" title="Lista con celdas personalizadas" /></p>
+<p>La idea clave es que <strong>una celda no es nada especial</strong>: es una vista más, como las que
+construiste en la sesión anterior. Por eso dentro de una fila puedes poner cualquier
+combinación de textos, imágenes y contenedores.</p>
+<h3 id="creando-el-proyecto">Creando el proyecto</h3>
+<p>Crea un proyecto <em>iOS &gt; App</em> con <strong>Interface: SwiftUI</strong> llamado <code>ejercicio_celdas</code>.
+Descarga <a href="assets/descargas/imagenes_celdas.zip">imagenes_celdas.zip</a> y
+arrastra las tres imágenes (<code>fondo_celda1.png</code>, <code>fondo_celda2.png</code> e <code>historia.jpg</code>) a
+los <em>Assets</em> del proyecto.</p>
+<h3 id="el-modelo">El modelo</h3>
+<p>Crea un fichero <code>Libro.swift</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">import</span><span class="w"> </span><span class="nc">Foundation</span>
+
+<span class="kd">struct</span><span class="w"> </span><span class="nc">Libro</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nv">titulo</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nv">autor</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nv">imagen</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="w">   </span><span class="c1">// nombre del asset</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Fíjate en que el modelo guarda el <strong>nombre</strong> de la imagen, no un objeto imagen. En
+<em>SwiftUI</em> es lo habitual: la vista crea el <code>Image</code> a partir del nombre cuando le toca
+dibujarse.</p>
+<h3 id="la-celda">La celda</h3>
+<p>Crea un fichero <code>CeldaLibro.swift</code> con la vista de una fila. Recibe el libro que debe
+mostrar y el nombre de la imagen de fondo que le toca:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">import</span><span class="w"> </span><span class="nc">SwiftUI</span>
+
+<span class="kd">struct</span><span class="w"> </span><span class="nc">CeldaLibro</span><span class="p">:</span><span class="w"> </span><span class="n">View</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nv">libro</span><span class="p">:</span><span class="w"> </span><span class="n">Libro</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nv">fondo</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">body</span><span class="p">:</span><span class="w"> </span><span class="n">some</span><span class="w"> </span><span class="n">View</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">HStack</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">VStack</span><span class="p">(</span><span class="n">alignment</span><span class="p">:</span><span class="w"> </span><span class="p">.</span><span class="n">leading</span><span class="p">,</span><span class="w"> </span><span class="n">spacing</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">Text</span><span class="p">(</span><span class="n">libro</span><span class="p">.</span><span class="n">titulo</span><span class="p">).</span><span class="n">font</span><span class="p">(.</span><span class="n">title3</span><span class="p">)</span>
+<span class="w">                </span><span class="n">Text</span><span class="p">(</span><span class="n">libro</span><span class="p">.</span><span class="n">autor</span><span class="p">).</span><span class="n">font</span><span class="p">(.</span><span class="n">subheadline</span><span class="p">).</span><span class="n">foregroundStyle</span><span class="p">(.</span><span class="n">secondary</span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">Spacer</span><span class="p">()</span>
+<span class="w">            </span><span class="n">Image</span><span class="p">(</span><span class="n">libro</span><span class="p">.</span><span class="n">imagen</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="n">resizable</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="n">scaledToFit</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="n">frame</span><span class="p">(</span><span class="n">width</span><span class="p">:</span><span class="w"> </span><span class="mi">44</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="p">.</span><span class="n">padding</span><span class="p">()</span>
+<span class="w">        </span><span class="c1">// .background dibuja la imagen por detrás de todo el contenido de la fila</span>
+<span class="w">        </span><span class="p">.</span><span class="n">background</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">fondo</span><span class="p">).</span><span class="n">resizable</span><span class="p">().</span><span class="n">scaledToFill</span><span class="p">())</span>
+<span class="w">        </span><span class="p">.</span><span class="n">listRowInsets</span><span class="p">(</span><span class="n">EdgeInsets</span><span class="p">())</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Dos detalles:</p>
+<ul>
+<li><code>.background(Image(...))</code> coloca la imagen <strong>detrás</strong> de todo el contenido de la
+  fila. Fíjate en que el modificador va aplicado al <code>HStack</code> entero, no a una vista   suelta. Por eso el fondo cubre toda la celda.</li>
+<li><code>.listRowInsets(EdgeInsets())</code> quita los márgenes que <code>List</code> añade por defecto a cada fila. Sin esto, el fondo no llegaría a los bordes de la pantalla. Prueba a comentar esa línea para ver la diferencia.</li>
+</ul>
+<h3 id="la-lista">La lista</h3>
+<p>Ahora el <code>ContentView</code>. Este es el esqueleto, en el que falta completar código (abajo vienen los detalles de cómo hacerlo):</p>
+<div class="highlight"><pre><span></span><code><span class="kd">import</span><span class="w"> </span><span class="nc">SwiftUI</span>
+
+<span class="kd">struct</span><span class="w"> </span><span class="nc">ContentView</span><span class="p">:</span><span class="w"> </span><span class="n">View</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nv">libros</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="n">Libro</span><span class="p">(</span><span class="n">titulo</span><span class="p">:</span><span class="w"> </span><span class="s">"La historia interminable"</span><span class="p">,</span><span class="w"> </span><span class="n">autor</span><span class="p">:</span><span class="w"> </span><span class="s">"Michael Ende"</span><span class="p">,</span><span class="w"> </span><span class="n">imagen</span><span class="p">:</span><span class="w"> </span><span class="s">"historia"</span><span class="p">)</span>
+<span class="w">        </span><span class="c1">// a) Añade aquí dos libros más</span>
+<span class="w">    </span><span class="p">]</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">body</span><span class="p">:</span><span class="w"> </span><span class="n">some</span><span class="w"> </span><span class="n">View</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">NavigationStack</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// b) Aquí va la List</span>
+
+<span class="w">            </span><span class="p">.</span><span class="n">listStyle</span><span class="p">(.</span><span class="n">plain</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">navigationTitle</span><span class="p">(</span><span class="s">"Mi tabla personalizada"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="p">#</span><span class="n">Preview</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ContentView</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="ejercicio">Ejercicio</h3>
+<p><em>a)</em> Completa el array <code>libros</code> con dos libros más, los que prefieras. Los tres pueden
+compartir la misma imagen de portada (<code>"historia"</code>), o puedes añadir más imágenes a los
+<em>Assets</em> si quieres.</p>
+<p><em>b)</em> Escribe la <code>List</code>. Como el fondo alterna, necesitas saber el <strong>índice</strong> de cada
+fila, así que en lugar de recorrer los libros recorreremos sus posiciones:</p>
+<div class="highlight"><pre><span></span><code><span class="n">List</span><span class="p">(</span><span class="n">libros</span><span class="p">.</span><span class="bp">indices</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="err">\</span><span class="p">.</span><span class="kc">self</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span>
+<span class="w">    </span><span class="n">CeldaLibro</span><span class="p">(</span><span class="n">libro</span><span class="p">:</span><span class="w"> </span><span class="n">libros</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
+<span class="w">               </span><span class="n">fondo</span><span class="p">:</span><span class="w"> </span><span class="cm">/* c) aquí decides qué fondo toca */</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><em>c)</em> Dentro de la llamada a <code>CeldaLibro</code>, calcula el nombre del fondo: <code>"fondo_celda2"</code>
+para las filas pares y <code>"fondo_celda1"</code> para las impares. Puedes usar el operador
+ternario junto con <code>i.isMultiple(of: 2)</code>.</p>
+<p><em>d)</em> Ejecuta la app y comprueba que las filas alternan el fondo. Prueba también a
+girar el dispositivo y a lanzarlo en un iPad: como no hemos fijado ninguna posición a
+mano, debería verse bien en los tres casos sin tocar nada.</p>
+<p><em>e)</em> <strong>Accesibilidad.</strong> Las imágenes de fondo son decorativas y no aportan
+información, así que <em>VoiceOver</em> no debería leerlas. Añade <code>.accessibilityHidden(true)</code>
+a la imagen de fondo dentro de <code>CeldaLibro</code> y comprueba que el resto sigue igual.</p>
+<div class="admonition question">
+<p class="admonition-title">Para pensar</p>
+<p>Una lista con cientos de filas no puede tener cientos de vistas creadas a la vez. Sin embargo, tú no has escrito nada para evitarlo. ¿Quién decide entonces cuántas <code>CeldaLibro</code> existen en un momento dado? Prueba a poner un <code>print</code> dentro del <code>body</code> de <code>CeldaLibro</code> y observa cuándo se ejecuta al desplazar una lista larga.</p>
+</div>
+<hr />
+<!---
+
+## Ejercicio 2 - Personalización de barras
+
+Vamos a construir una barra superior con una textura de madera, que contiene un campo
+de texto con fondo propio y un control segmentado. El resultado es este:
+
+![Resultado del ejercicio de toolbar](assets/img/toolbar_resultado.png "Barra personalizada")
+
+Es el ejercicio más interesante de la sesión porque las barras son, de todos los
+componentes, el que menos se deja personalizar: el sistema se reserva su aspecto para
+garantizar que los botones sigan siendo legibles. Veremos dónde está exactamente ese
+límite y cómo trabajar con él en lugar de contra él.
+
+### Creando el proyecto
+
+Crea un proyecto _iOS > App_ con **Interface: SwiftUI** llamado `ejercicio_toolbar`, y
+añade a los _Assets_ las imágenes de
+<a href="assets/descargas/imagenes_toolbar.zip">imagenes_toolbar.zip</a>
+(`fondo_madera.png` y `fondo_textfield.png`).
+
+### El fondo de la barra
+
+_SwiftUI_ tiene un modificador para cambiar el fondo de una barra:
+
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="n">toolbarBackground</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">brown</span><span class="p">,</span><span class="w"> </span><span class="k">for</span><span class="p">:</span><span class="w"> </span><span class="p">.</span><span class="n">navigationBar</span><span class="p">)</span>
+<span class="p">.</span><span class="n">toolbarBackground</span><span class="p">(.</span><span class="n">visible</span><span class="p">,</span><span class="w"> </span><span class="k">for</span><span class="p">:</span><span class="w"> </span><span class="p">.</span><span class="n">navigationBar</span><span class="p">)</span>
+</code></pre></div>
+
+Esto **funciona** y pone la barra marrón. Pero si intentas pasarle una imagen te
+encontrarás con un detalle importante: la firma del modificador es
+
+<div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nf">toolbarBackground</span><span class="p">(</span><span class="kc">_</span><span class="w"> </span><span class="n">style</span><span class="p">:</span><span class="w"> </span><span class="n">some</span><span class="w"> </span><span class="n">ShapeStyle</span><span class="p">,</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">bars</span><span class="p">:</span><span class="w"> </span><span class="n">ToolbarPlacement</span><span class="p">...)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="n">some</span><span class="w"> </span><span class="n">View</span>
+</code></pre></div>
+
+es decir, espera un **`ShapeStyle`** (un color, un degradado, un material), **no una
+`View`**. Por tanto:
+
+<div class="highlight"><pre><span></span><code><span class="p">.</span><span class="n">toolbarBackground</span><span class="p">(</span><span class="n">Color</span><span class="p">.</span><span class="n">brown</span><span class="p">,</span><span class="w"> </span><span class="k">for</span><span class="p">:</span><span class="w"> </span><span class="p">.</span><span class="n">navigationBar</span><span class="p">)</span><span class="w">                 </span><span class="c1">// ✅ funciona</span>
+<span class="p">.</span><span class="n">toolbarBackground</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="s">"fondo_madera"</span><span class="p">),</span><span class="w"> </span><span class="k">for</span><span class="p">:</span><span class="w"> </span><span class="p">.</span><span class="n">navigationBar</span><span class="p">)</span><span class="w">       </span><span class="c1">// ❌ no compila</span>
+<span class="p">.</span><span class="n">toolbarBackground</span><span class="p">(</span><span class="n">ImagePaint</span><span class="p">(</span><span class="n">image</span><span class="p">:</span><span class="w"> </span><span class="n">Image</span><span class="p">(</span><span class="s">"fondo_madera"</span><span class="p">)),</span><span class="w"> </span><span class="k">for</span><span class="p">:</span><span class="w"> </span><span class="p">.</span><span class="n">navigationBar</span><span class="p">)</span>
+<span class="w">                                                                     </span><span class="c1">// ⚠️ compila y no pinta nada</span>
+</code></pre></div>
+
+El tercer caso es el peligroso: `ImagePaint` **sí** cumple `ShapeStyle`, así que
+compila sin un solo aviso… y la barra se queda transparente. No hay error que te
+oriente.
+
+### Solución: dibujar la textura bajo la barra
+
+Como no podemos pasar la imagen al modificador, la ocultamos el fondo de la barra y
+dibujamos la textura nosotros, extendiéndola hacia arriba hasta cubrir la zona de
+estado:
+
+<div class="highlight"><pre><span></span><code><span class="kd">import</span><span class="w"> </span><span class="nc">SwiftUI</span>
+
+<span class="kd">struct</span><span class="w"> </span><span class="nc">ContentView</span><span class="p">:</span><span class="w"> </span><span class="n">View</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">@</span><span class="n">State</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">texto</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">""</span>
+<span class="w">    </span><span class="p">@</span><span class="n">State</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">segmento</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">body</span><span class="p">:</span><span class="w"> </span><span class="n">some</span><span class="w"> </span><span class="n">View</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// El alto de la zona de estado cambia según el modelo de iPhone,</span>
+<span class="w">        </span><span class="c1">// así que lo leemos en lugar de poner una constante.</span>
+<span class="w">        </span><span class="n">GeometryReader</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">geo</span><span class="w"> </span><span class="k">in</span>
+<span class="w">            </span><span class="n">NavigationStack</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">ZStack</span><span class="p">(</span><span class="n">alignment</span><span class="p">:</span><span class="w"> </span><span class="p">.</span><span class="n">top</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">Image</span><span class="p">(</span><span class="s">"fondo_madera"</span><span class="p">)</span>
+<span class="w">                        </span><span class="p">.</span><span class="n">resizable</span><span class="p">()</span>
+<span class="w">                        </span><span class="p">.</span><span class="n">scaledToFill</span><span class="p">()</span>
+<span class="w">                        </span><span class="p">.</span><span class="n">frame</span><span class="p">(</span><span class="n">width</span><span class="p">:</span><span class="w"> </span><span class="n">geo</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span><span class="p">,</span>
+<span class="w">                               </span><span class="n">height</span><span class="p">:</span><span class="w"> </span><span class="n">geo</span><span class="p">.</span><span class="n">safeAreaInsets</span><span class="p">.</span><span class="n">top</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">48</span><span class="p">)</span>
+<span class="w">                        </span><span class="p">.</span><span class="n">clipped</span><span class="p">()</span>
+<span class="w">                        </span><span class="p">.</span><span class="n">ignoresSafeArea</span><span class="p">(</span><span class="n">edges</span><span class="p">:</span><span class="w"> </span><span class="p">.</span><span class="n">top</span><span class="p">)</span>
+<span class="w">                        </span><span class="p">.</span><span class="n">allowsHitTesting</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+
+<span class="w">                    </span><span class="n">VStack</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="n">Spacer</span><span class="p">()</span>
+<span class="w">                        </span><span class="c1">// a) Aquí va la etiqueta que muestra el segmento elegido</span>
+<span class="w">                        </span><span class="n">Spacer</span><span class="p">()</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="p">.</span><span class="n">toolbar</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">ToolbarItem</span><span class="p">(</span><span class="n">placement</span><span class="p">:</span><span class="w"> </span><span class="p">.</span><span class="n">topBarLeading</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="c1">// b) Aquí va el campo de texto</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                    </span><span class="n">ToolbarItem</span><span class="p">(</span><span class="n">placement</span><span class="p">:</span><span class="w"> </span><span class="p">.</span><span class="n">topBarTrailing</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="c1">// c) Aquí va el control segmentado</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="p">.</span><span class="n">toolbarBackground</span><span class="p">(.</span><span class="n">hidden</span><span class="p">,</span><span class="w"> </span><span class="k">for</span><span class="p">:</span><span class="w"> </span><span class="p">.</span><span class="n">navigationBar</span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+`GeometryReader` nos da, entre otras cosas, el tamaño del área segura
+(`safeAreaInsets`). Sumamos 48 puntos (el alto aproximado de la barra) para saber
+hasta dónde tiene que llegar la madera. `.ignoresSafeArea(edges: .top)` permite que la
+imagen se dibuje por encima de la zona de estado, y `.allowsHitTesting(false)` evita
+que la textura intercepte los toques.
+
+### Ejercicio
+
+_a)_ Añade un `Text` que muestre `"Segmento 1"` o `"Segmento 2"` según el valor de
+`segmento`, con `.font(.title)`.
+
+_b)_ Añade el campo de texto. Debe usar `TextField("Escribe aquí", text: $texto)` —
+fíjate en el `$`, porque el campo **escribe** en la variable. Para que se vea con su
+fondo propio:
+
+<div class="highlight"><pre><span></span><code><span class="n">TextField</span><span class="p">(</span><span class="s">"Escribe aquí"</span><span class="p">,</span><span class="w"> </span><span class="n">text</span><span class="p">:</span><span class="w"> </span><span class="err">$</span><span class="n">texto</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">textFieldStyle</span><span class="p">(.</span><span class="n">plain</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">foregroundStyle</span><span class="p">(.</span><span class="n">white</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">padding</span><span class="p">(.</span><span class="n">horizontal</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">frame</span><span class="p">(</span><span class="n">width</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="n">background</span><span class="p">(</span>
+<span class="w">        </span><span class="n">Image</span><span class="p">(</span><span class="s">"fondo_textfield"</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">resizable</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">clipShape</span><span class="p">(</span><span class="n">RoundedRectangle</span><span class="p">(</span><span class="n">cornerRadius</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">))</span>
+<span class="w">    </span><span class="p">)</span>
+</code></pre></div>
+
+_c)_ Añade el control segmentado. En _SwiftUI_ un control de este tipo es un `Picker`
+al que se le da el estilo `.segmented`. Cada opción lleva un `.tag` con el valor que
+representa, que es lo que acabará en la variable `segmento`:
+
+<div class="highlight"><pre><span></span><code><span class="n">Picker</span><span class="p">(</span><span class="s">""</span><span class="p">,</span><span class="w"> </span><span class="n">selection</span><span class="p">:</span><span class="w"> </span><span class="err">$</span><span class="n">segmento</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Text</span><span class="p">(</span><span class="s">"Uno"</span><span class="p">).</span><span class="n">tag</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="n">Text</span><span class="p">(</span><span class="s">"Dos"</span><span class="p">).</span><span class="n">tag</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="n">pickerStyle</span><span class="p">(.</span><span class="n">segmented</span><span class="p">)</span>
+<span class="p">.</span><span class="n">tint</span><span class="p">(.</span><span class="n">brown</span><span class="p">)</span>
+<span class="p">.</span><span class="n">frame</span><span class="p">(</span><span class="n">width</span><span class="p">:</span><span class="w"> </span><span class="mi">130</span><span class="p">)</span>
+</code></pre></div>
+
+`.tint` es el modificador que tiñe el control. Prueba a quitarlo para ver la
+diferencia, y a cambiar `.brown` por otro color.
+
+_d)_ Ejecuta la app y comprueba que al cambiar de segmento cambia la etiqueta del centro, y que el texto "Escribe aquí" se lee entero.
+
+_e)_ **Prueba en varios dispositivos.** Lanza la app en un iPhone grande y en uno pequeño. La madera debe cubrir exactamente la zona de estado más la barra en ambos. Después, prueba a sustituir `geo.safeAreaInsets.top + 48` por la constante `110` y
+vuelve a lanzarla en los dos: verás por qué no se deben escribir constantes de pantalla.
+
+_f)_ **Experimento.** Sustituye el bloque de la textura por
+`.toolbarBackground(ImagePaint(image: Image("fondo_madera")), for: .navigationBar)`
+junto con `.toolbarBackground(.visible, for: .navigationBar)`. Comprueba que compila
+sin avisos y que la barra se queda sin textura. Después cambia `ImagePaint(...)` por
+`Color.brown` y verás que sí pinta. Este contraste es la razón de ser del ejercicio.
+
+!!! question "Para pensar"
+    ¿Por qué crees que Apple permite personalizar el fondo de una barra con un color o
+    un degradado, pero no con una imagen arbitraria? Piensa en lo que ocurre con la
+    legibilidad de los botones de la barra cuando el fondo es una fotografía...
+
+----->
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy"], "search": "assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>

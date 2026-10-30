@@ -1,0 +1,848 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="sesion-3-contenedores-y-navegacion.html">
+      
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>4- Diseño de aplicaciones universales - Interfaz de usuario en iOS con SwiftUI (IUDM)</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="Indigo" data-md-color-accent="Indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#4-diseno-de-aplicaciones-universales" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="index.html" title="Interfaz de usuario en iOS con SwiftUI (IUDM)" class="md-header__button md-logo" aria-label="Interfaz de usuario en iOS con SwiftUI (IUDM)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Interfaz de usuario en iOS con SwiftUI (IUDM)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4- Diseño de aplicaciones universales
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="Interfaz de usuario en iOS con SwiftUI (IUDM)" class="md-nav__button md-logo" aria-label="Interfaz de usuario en iOS con SwiftUI (IUDM)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Interfaz de usuario en iOS con SwiftUI (IUDM)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Presentación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sesion-1-introduccion-a-swiftui.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1- Introducción a SwiftUI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sesion-2-guias-de-estilo-y-personalizacion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2- Guías de estilo y personalización
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="sesion-3-contenedores-y-navegacion.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3- Contenedores y navegación
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    4- Diseño de aplicaciones universales
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="sesion-4-apps-universales.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    4- Diseño de aplicaciones universales
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#size-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Size classes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-1-vista-adaptable-con-size-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 1 - Vista adaptable con size classes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#navigationsplitview" class="md-nav__link">
+    <span class="md-ellipsis">
+      NavigationSplitView
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-2-peliculas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 2 - Películas
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#size-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Size classes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-1-vista-adaptable-con-size-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 1 - Vista adaptable con size classes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#navigationsplitview" class="md-nav__link">
+    <span class="md-ellipsis">
+      NavigationSplitView
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicio-2-peliculas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejercicio 2 - Películas
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="4-diseno-de-aplicaciones-universales">4- Diseño de aplicaciones universales</h1>
+<p>Una aplicación <strong>universal</strong> es la que funciona bien tanto en iPhone como en iPad,
+aprovechando el espacio de cada uno en lugar de limitarse a estirar el diseño del
+teléfono.</p>
+<p>Para conseguirlo tenemos dos herramientas: las <strong><em>size classes</em></strong>, que nos dicen
+cuánto espacio tenemos, y <code>NavigationSplitView</code>, un contenedor de varias columnas que
+se adapta solo al dispositivo.</p>
+<h2 id="size-classes">Size classes</h2>
+<p>iOS no clasifica las pantallas por pulgadas sino por <strong><em>size classes</em></strong>: cada
+dimensión puede ser <code>compact</code> (compacta) o <code>regular</code> (regular). Lo importante es que
+dependen del espacio <strong>realmente disponible</strong>, no del modelo de dispositivo: un iPad
+con dos apps en pantalla partida puede tener ancho compacto.</p>
+<p>A grandes rasgos:</p>
+<table>
+<thead>
+<tr>
+<th>Situación</th>
+<th>Ancho</th>
+<th>Alto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iPhone en vertical</td>
+<td>compacto</td>
+<td>regular</td>
+</tr>
+<tr>
+<td>iPhone en horizontal (modelos pequeños)</td>
+<td>compacto</td>
+<td>compacto</td>
+</tr>
+<tr>
+<td>iPad a pantalla completa</td>
+<td>regular</td>
+<td>regular</td>
+</tr>
+<tr>
+<td>iPad en <em>Split View</em> estrecho</td>
+<td>compacto</td>
+<td>regular</td>
+</tr>
+</tbody>
+</table>
+<p>En <em>SwiftUI</em> se leen con <code>@Environment</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">@</span><span class="n">Environment</span><span class="p">(</span><span class="err">\</span><span class="p">.</span><span class="n">horizontalSizeClass</span><span class="p">)</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">anchoClase</span>
+<span class="p">@</span><span class="n">Environment</span><span class="p">(</span><span class="err">\</span><span class="p">.</span><span class="n">verticalSizeClass</span><span class="p">)</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">altoClase</span>
+</code></pre></div>
+<p>y se usan para decidir la disposición:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="n">anchoClase</span><span class="w"> </span><span class="p">==</span><span class="w"> </span><span class="p">.</span><span class="n">compact</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">VStack</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">contenido</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">HStack</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">contenido</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>La ventaja de resolverlo así es que la regla de adaptación queda <strong>escrita en el
+código</strong>, a la vista de cualquiera que lea la vista y bajo control de versiones, en
+lugar de ser un ajuste invisible en algún inspector.</p>
+<div class="admonition tip">
+<p class="admonition-title">ViewThatFits</p>
+<p>Cuando la decisión no depende tanto del dispositivo como de si el contenido cabe o
+no, existe una alternativa más directa: <code>ViewThatFits</code> prueba las disposiciones que
+le des en orden y se queda con la primera que quepa.</p>
+<div class="highlight"><pre><span></span><code><span class="n">ViewThatFits</span><span class="p">(</span><span class="k">in</span><span class="p">:</span><span class="w"> </span><span class="p">.</span><span class="n">horizontal</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">HStack</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">imagen</span><span class="p">;</span><span class="w"> </span><span class="n">texto</span><span class="w"> </span><span class="p">}</span><span class="w">    </span><span class="c1">// si cabe en horizontal, esta</span>
+<span class="w">    </span><span class="n">VStack</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">imagen</span><span class="p">;</span><span class="w"> </span><span class="n">texto</span><span class="w"> </span><span class="p">}</span><span class="w">    </span><span class="c1">// si no, esta</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<hr />
+<h2 id="ejercicio-1-vista-adaptable-con-size-classes">Ejercicio 1 - Vista adaptable con size classes</h2>
+<p>Empezaremos con un ejercicio corto para ver las <em>size classes</em> en funcionamiento.</p>
+<table>
+<thead>
+<tr>
+<th>iPhone (ancho compacto)</th>
+<th>iPad (ancho regular)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="Universal en iPhone" src="assets/img/universal_iphone.png" /></td>
+<td><img alt="Universal en iPad" src="assets/img/universal_ipad.png" /></td>
+</tr>
+</tbody>
+</table>
+<h3 id="creando-el-proyecto">Creando el proyecto</h3>
+<p>Crea un proyecto <em>iOS &gt; App</em> con <strong>Interface: SwiftUI</strong> llamado <code>prueba_universal</code>. No
+necesita imágenes.</p>
+<h3 id="el-codigo">El código</h3>
+<div class="highlight"><pre><span></span><code><span class="kd">import</span><span class="w"> </span><span class="nc">SwiftUI</span>
+
+<span class="kd">struct</span><span class="w"> </span><span class="nc">ContentView</span><span class="p">:</span><span class="w"> </span><span class="n">View</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// a) Lee aquí la size class horizontal</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">esCompacta</span><span class="p">:</span><span class="w"> </span><span class="nb">Bool</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* b) */</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">body</span><span class="p">:</span><span class="w"> </span><span class="n">some</span><span class="w"> </span><span class="n">View</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">VStack</span><span class="p">(</span><span class="n">spacing</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">Text</span><span class="p">(</span><span class="n">esCompacta</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="s">"Ancho compacto (iPhone)"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">"Ancho regular (iPad)"</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="n">font</span><span class="p">(.</span><span class="n">title</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="n">multilineTextAlignment</span><span class="p">(.</span><span class="n">center</span><span class="p">)</span>
+
+<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="nv">bloques</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s">"Uno"</span><span class="p">,</span><span class="w"> </span><span class="s">"Dos"</span><span class="p">,</span><span class="w"> </span><span class="s">"Tres"</span><span class="p">]</span>
+<span class="w">            </span><span class="c1">// c) En columna si es compacta, en fila si es regular</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="p">.</span><span class="n">padding</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">func</span><span class="w"> </span><span class="nf">bloque</span><span class="p">(</span><span class="kc">_</span><span class="w"> </span><span class="n">texto</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="n">some</span><span class="w"> </span><span class="n">View</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="n">texto</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">frame</span><span class="p">(</span><span class="n">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">background</span><span class="p">(.</span><span class="n">tint</span><span class="p">.</span><span class="n">opacity</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span><span class="w"> </span><span class="k">in</span><span class="p">:</span><span class="w"> </span><span class="n">RoundedRectangle</span><span class="p">(</span><span class="n">cornerRadius</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">))</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="p">#</span><span class="n">Preview</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ContentView</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="se-pide">Se pide</h3>
+<p><em>a)</em> Declara <code>@Environment(\.horizontalSizeClass) private var anchoClase</code>.</p>
+<p><em>b)</em> Completa <code>esCompacta</code> para que devuelva <code>true</code> cuando <code>anchoClase</code> sea <code>.compact</code>.</p>
+<p><em>c)</em> Según <code>esCompacta</code>, coloca los tres bloques en un <code>VStack</code> o en un <code>HStack</code>,
+recorriéndolos con <code>ForEach(bloques, id: \.self) { bloque($0) }</code>.</p>
+<p><em>d)</em> Lanza la app en un iPhone y en un iPad y comprueba que cambian tanto el texto
+como la disposición.</p>
+<p><em>e)</em> <strong>Comprueba que no depende del dispositivo sino del espacio.</strong> En el iPad, abre
+la app en <em>Split View</em> junto a otra y ve estrechándola. En cuanto el ancho pasa a ser
+compacto, el diseño debe cambiar al de iPhone aunque sigas en un iPad.</p>
+<p><em>f)</em> Añade debajo un texto pequeño que muestre el valor de las dos <em>size classes</em>
+(horizontal y vertical) para poder verlas mientras giras el dispositivo. Tendrás que
+leer también <code>verticalSizeClass</code> y convertir el valor a texto con un <code>switch</code>.</p>
+<hr />
+<h2 id="navigationsplitview">NavigationSplitView</h2>
+<p><code>NavigationSplitView</code> es un contenedor de dos (o tres) columnas. En pantallas anchas
+muestra las columnas una al lado de otra; en un iPhone se <strong>colapsa</strong> solo y se
+comporta como una navegación normal: primero la lista, y al seleccionar algo se navega
+al detalle.</p>
+<div class="highlight"><pre><span></span><code><span class="n">NavigationSplitView</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// columna principal (la lista)</span>
+<span class="p">}</span><span class="w"> </span><span class="n">detail</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// columna de detalle</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>La conexión entre lista y detalle se hace a través de la <strong>selección</strong>, no con código
+de navegación:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span><span class="w"> </span><span class="nc">ContentView</span><span class="p">:</span><span class="w"> </span><span class="n">View</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nv">contenido</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="s">"Uno"</span><span class="p">,</span><span class="w"> </span><span class="s">"dos"</span><span class="p">,</span><span class="w"> </span><span class="s">"tres"</span><span class="p">]</span>
+<span class="w">    </span><span class="p">@</span><span class="n">State</span><span class="w"> </span><span class="kd">private</span><span class="w"> </span><span class="kd">var</span><span class="w"> </span><span class="nv">seleccionado</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">?</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">body</span><span class="p">:</span><span class="w"> </span><span class="n">some</span><span class="w"> </span><span class="n">View</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">NavigationSplitView</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">List</span><span class="p">(</span><span class="n">contenido</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">:</span><span class="w"> </span><span class="err">\</span><span class="p">.</span><span class="kc">self</span><span class="p">,</span><span class="w"> </span><span class="n">selection</span><span class="p">:</span><span class="w"> </span><span class="err">$</span><span class="n">seleccionado</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="k">in</span>
+<span class="w">                </span><span class="n">Text</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="p">.</span><span class="n">navigationTitle</span><span class="p">(</span><span class="s">"Elementos"</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="n">detail</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nv">seleccionado</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">Text</span><span class="p">(</span><span class="n">seleccionado</span><span class="p">).</span><span class="n">font</span><span class="p">(.</span><span class="n">largeTitle</span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">Text</span><span class="p">(</span><span class="s">"Selecciona un elemento"</span><span class="p">).</span><span class="n">foregroundStyle</span><span class="p">(.</span><span class="n">secondary</span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><img alt="Split view en iPad" src="assets/img/split_ipad.png" title="NavigationSplitView en iPad" /></p>
+<p>Fíjate en cómo se comunican las dos columnas: <strong>a través de un dato</strong>, no llamando a
+la otra vista. La lista escribe en <code>seleccionado</code>, y el detalle se dibuja a partir de
+ese valor. Ninguna de las dos tiene una referencia a la otra.</p>
+<p>Por eso la columna de detalle tiene que contemplar el caso de que no haya nada
+seleccionado, que es como arranca la app. De ahí que <code>seleccionado</code> sea un opcional y
+que haya un <code>else</code> con un mensaje.</p>
+<hr />
+<h2 id="ejercicio-2-peliculas">Ejercicio 2 - Películas</h2>
+<p>Este es el ejercicio final del libro y reúne casi todo lo visto: un modelo propio, una
+lista maestra, una vista de detalle y una disposición que se adapta al espacio.</p>
+<p><img alt="Detalle de películas en iPad" src="assets/img/peliculas_detalle_ipad.png" title="Maestro-detalle de películas" /></p>
+<h3 id="creando-el-proyecto_1">Creando el proyecto</h3>
+<p>Crea un proyecto <em>iOS &gt; App</em> con <strong>Interface: SwiftUI</strong> llamado <code>ejercicio_peliculas</code>,
+y añade a los <em>Assets</em> la imagen de
+<a href="assets/descargas/imagenes_peliculas.zip">imagenes_peliculas.zip</a>
+(<code>sentido.jpg</code>).</p>
+<h3 id="el-modelo">El modelo</h3>
+<p>Crea <code>Pelicula.swift</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">import</span><span class="w"> </span><span class="nc">Foundation</span>
+
+<span class="kd">struct</span><span class="w"> </span><span class="nc">Pelicula</span><span class="p">:</span><span class="w"> </span><span class="n">Identifiable</span><span class="p">,</span><span class="w"> </span><span class="nb">Hashable</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nv">id</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">UUID</span><span class="p">()</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nv">titulo</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nv">caratula</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nv">fecha</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nv">descripcion</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span>
+<span class="p">}</span>
+
+<span class="kd">extension</span><span class="w"> </span><span class="nc">Pelicula</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">static</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nv">ejemplos</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="n">Pelicula</span><span class="p">(</span><span class="n">titulo</span><span class="p">:</span><span class="w"> </span><span class="s">"El sentido de la vida"</span><span class="p">,</span>
+<span class="w">                 </span><span class="n">caratula</span><span class="p">:</span><span class="w"> </span><span class="s">"sentido"</span><span class="p">,</span>
+<span class="w">                 </span><span class="n">fecha</span><span class="p">:</span><span class="w"> </span><span class="s">"1983"</span><span class="p">,</span>
+<span class="w">                 </span><span class="n">descripcion</span><span class="p">:</span><span class="w"> </span><span class="s">"Conjunto de episodios que muestran de forma disparatada los momentos más importantes del ciclo de la vida."</span><span class="p">)</span>
+<span class="w">        </span><span class="c1">// a) Añade aquí al menos una película más</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>Hashable</code> hace falta para poder usar la película como valor de selección de la
+<code>List</code>.</p>
+<h3 id="la-vista-de-detalle">La vista de detalle</h3>
+<p>Crea <code>DetailView.swift</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">import</span><span class="w"> </span><span class="nc">SwiftUI</span>
+
+<span class="kd">struct</span><span class="w"> </span><span class="nc">DetailView</span><span class="p">:</span><span class="w"> </span><span class="n">View</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nv">pelicula</span><span class="p">:</span><span class="w"> </span><span class="n">Pelicula</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">body</span><span class="p">:</span><span class="w"> </span><span class="n">some</span><span class="w"> </span><span class="n">View</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">ScrollView</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">VStack</span><span class="p">(</span><span class="n">alignment</span><span class="p">:</span><span class="w"> </span><span class="p">.</span><span class="n">leading</span><span class="p">,</span><span class="w"> </span><span class="n">spacing</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="c1">// b) Cabecera: título a la izquierda y año a la derecha</span>
+
+<span class="w">                </span><span class="c1">// c) Carátula y descripción, en fila o en columna según quepa</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="p">.</span><span class="n">padding</span><span class="p">()</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="p">.</span><span class="n">navigationTitle</span><span class="p">(</span><span class="n">pelicula</span><span class="p">.</span><span class="n">titulo</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="n">navigationBarTitleDisplayMode</span><span class="p">(.</span><span class="n">inline</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">caratula</span><span class="p">:</span><span class="w"> </span><span class="n">some</span><span class="w"> </span><span class="n">View</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Image</span><span class="p">(</span><span class="n">pelicula</span><span class="p">.</span><span class="n">caratula</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">resizable</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">scaledToFit</span><span class="p">()</span>
+<span class="w">            </span><span class="p">.</span><span class="n">frame</span><span class="p">(</span><span class="n">maxWidth</span><span class="p">:</span><span class="w"> </span><span class="mi">220</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">cornerRadius</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">descripcion</span><span class="p">:</span><span class="w"> </span><span class="n">some</span><span class="w"> </span><span class="n">View</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Text</span><span class="p">(</span><span class="n">pelicula</span><span class="p">.</span><span class="n">descripcion</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">frame</span><span class="p">(</span><span class="n">maxWidth</span><span class="p">:</span><span class="w"> </span><span class="mi">420</span><span class="p">,</span><span class="w"> </span><span class="n">alignment</span><span class="p">:</span><span class="w"> </span><span class="p">.</span><span class="n">leading</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="la-vista-principal">La vista principal</h3>
+<p>Y <code>ContentView.swift</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">import</span><span class="w"> </span><span class="nc">SwiftUI</span>
+
+<span class="kd">struct</span><span class="w"> </span><span class="nc">ContentView</span><span class="p">:</span><span class="w"> </span><span class="n">View</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nv">peliculas</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Pelicula</span><span class="p">.</span><span class="n">ejemplos</span>
+<span class="w">    </span><span class="c1">// d) Estado con la película seleccionada</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nv">body</span><span class="p">:</span><span class="w"> </span><span class="n">some</span><span class="w"> </span><span class="n">View</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">NavigationSplitView</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// e) La lista con selección</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="n">detail</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// f) El detalle, o un texto si no hay nada seleccionado</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="p">#</span><span class="n">Preview</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">ContentView</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="se-pide_1">Se pide</h3>
+<p><em>a)</em> Añade al menos una película más al array <code>ejemplos</code>. Puedes reutilizar la misma
+carátula o añadir otras imágenes a los <em>Assets</em>.</p>
+<p><em>b)</em> Escribe la cabecera del detalle: un <code>HStack</code> con el título
+(<code>.font(.largeTitle.bold())</code>), un <code>Spacer(minLength: 12)</code> y el año
+(<code>.font(.title3)</code>, <code>.foregroundStyle(.secondary)</code>). Usa
+<code>HStack(alignment: .firstTextBaseline)</code> para que título y año queden alineados por la
+línea base del texto.</p>
+<div class="admonition note">
+<p class="admonition-title">Por qué un <code>Spacer</code> y no un ancho fijo</p>
+<p>Podrías colocar el año dándole al título un ancho fijo, pero entonces un título
+largo se saldría por encima del año, o quedaría cortado. Con <code>HStack</code> + <code>Spacer</code> el
+reparto lo hace el contenedor: el <code>Spacer</code> ocupa lo que sobra, y si no sobra nada
+el título se ajusta en varias líneas en lugar de solaparse. Pruébalo poniendo un
+título muy largo en una de tus películas.</p>
+</div>
+<p><em>c)</em> Coloca la carátula y la descripción usando <code>ViewThatFits(in: .horizontal)</code>, con un
+<code>HStack</code> como primera opción y un <code>VStack</code> como segunda. Recuerda que ya tienes las dos
+subvistas (<code>caratula</code> y <code>descripcion</code>) definidas como propiedades.</p>
+<p><em>d)</em> Declara <code>@State private var seleccionada: Pelicula?</code>. Fíjate en que es
+<strong>opcional</strong>: al arrancar no hay nada seleccionado.</p>
+<p><em>e)</em> Escribe la lista con selección:</p>
+<div class="highlight"><pre><span></span><code><span class="n">List</span><span class="p">(</span><span class="n">peliculas</span><span class="p">,</span><span class="w"> </span><span class="n">selection</span><span class="p">:</span><span class="w"> </span><span class="err">$</span><span class="n">seleccionada</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">pelicula</span><span class="w"> </span><span class="k">in</span>
+<span class="w">    </span><span class="n">Text</span><span class="p">(</span><span class="n">pelicula</span><span class="p">.</span><span class="n">titulo</span><span class="p">).</span><span class="n">tag</span><span class="p">(</span><span class="n">pelicula</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="n">navigationTitle</span><span class="p">(</span><span class="s">"Películas"</span><span class="p">)</span>
+</code></pre></div>
+<p>El <code>.tag(pelicula)</code> es lo que conecta cada fila con el valor de selección.</p>
+<p><em>f)</em> En el bloque <code>detail:</code>, muestra <code>DetailView(pelicula: seleccionada)</code> si hay
+selección, y si no un <code>Text("Selecciona una película")</code> en color secundario. Usa
+<code>if let seleccionada { ... } else { ... }</code>.</p>
+<p><em>g)</em> Ejecuta la app <strong>en un iPad</strong> y comprueba que al pulsar una película aparece su
+ficha en la columna derecha. Gíralo y observa cómo <code>ViewThatFits</code> cambia la
+disposición de la carátula y la descripción.</p>
+<p><em>h)</em> Ejecuta ahora la app <strong>en un iPhone</strong>. El <code>NavigationSplitView</code> se colapsa: verás
+primero la lista, y al pulsar una película se navega a la ficha con un botón de volver.
+No has escrito ni una línea para que eso ocurra.</p>
+<p><em>i)</em> <strong>Para ampliar.</strong> Añade un buscador a la lista de películas con lo aprendido en la
+sesión 3, de forma que se puedan filtrar por título. Acuérdate de usar
+<code>placement: .navigationBarDrawer(displayMode: .always)</code>.</p>
+<div class="admonition question">
+<p class="admonition-title">Para pensar</p>
+<p><code>seleccionada</code> es de tipo <code>Pelicula?</code>, es decir, opcional. ¿Qué tendrías que
+cambiar en <code>ContentView</code> si quisieras que al arrancar apareciese ya seleccionada la
+primera película? ¿Y qué problema tendrías si la lista pudiera estar vacía?</p>
+</div>
+<hr />
+<!---
+
+## Resumen del libro
+
+A lo largo de estas cuatro sesiones hemos visto:
+
+* **Sesión 1**: vistas, modificadores, contenedores (`VStack`/`HStack`/`ZStack`),
+  estado (`@State`), _bindings_ (`$`), listas y navegación.
+* **Sesión 2**: las guías de estilo de Apple y el rediseño _Liquid Glass_, y cómo
+  personalizar filas de lista y barras **a través de los puntos de personalización
+  soportados**.
+* **Sesión 3**: contenido paginado con `TabView`, rejillas adaptativas con
+  `LazyVGrid` y búsqueda con `.searchable`.
+* **Sesión 4**: _size classes_, `ViewThatFits` y `NavigationSplitView` para
+  aplicaciones universales.
+
+La idea que atraviesa todo el libro es siempre la misma: **se describe qué debe verse
+en función del estado, y el sistema se encarga del resto**. Cada vez que te encuentres
+escribiendo código para «actualizar» algo en pantalla, merece la pena parar y
+preguntarse qué dato debería cambiar en su lugar.
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": ".", "features": ["content.code.copy"], "search": "assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>
