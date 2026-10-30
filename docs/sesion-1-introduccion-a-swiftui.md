@@ -1,8 +1,7 @@
 # 1- Introducción a SwiftUI
 
 Esta sesión es un recorrido rápido por _SwiftUI_. Se asume que ya conoces _Swift_
-(tipos, `struct`, `enum`, opcionales, clausuras), pero no que hayas construido una
-interfaz con él. 
+(tipos, `struct`, `enum`, opcionales, clausuras), pero que no tienes experiencia con _SwiftUI_. 
 
 ## De UIKit a SwiftUI
 
